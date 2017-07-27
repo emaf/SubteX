@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Subte"
+             x:Class="Subte.MainPage" >
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Name="Whatever" />
+    </ContentPage.ToolbarItems>-->
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView Margin="10" x:Name="linesList" 
+              ItemsSource="{Binding LineItems}"
+              IsPullToRefreshEnabled="True"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+              RefreshCommand="{Binding LoadSubwayLinesCommand}"
+              RowHeight="60" 
+              HasUnevenRows="false" 
+              SeparatorVisibility="None" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="60"> 
+                            <AbsoluteLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="0" AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize">
+                                    <ContentView Margin="3" WidthRequest="70">
+                                        <Image Margin="10,0,0,15"  Source="{Binding ImageSource}" Aspect="Fill" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50"  />
+                                    </ContentView>
+                                    <ContentView Padding="10,5,0,0">
+                                        <StackLayout Spacing="0">
+                                            <Label Text="{Binding Name, StringFormat=Linea \{0\}}" FontAttributes="Bold" HeightRequest="20" VerticalTextAlignment="End" LineBreakMode="TailTruncation" />
+                                            <Label Text="{Binding Status}" HeightRequest="20" VerticalTextAlignment="End" FontSize="Micro" LineBreakMode="WordWrap" />
+                                        </StackLayout>
+                                    </ContentView>
+                                </StackLayout>
+                            </AbsoluteLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
